@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Seerah Poem Slideshow</title>
+<style>
+  /* Import elegant Arabic-style serif and sans-serif fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Raleway:wght@500&display=swap');
+
+  /* Base page styling: rich brown background with subtle texture and centered content */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: #ffffff;            /* bright white text for maximum readability */
+    font-family: 'Amiri', serif;
+    font-weight: bold;         /* make text bolder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #5b3a29;  /* fallback brown background */
+    /* use our decorative image as a backdrop */
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+  }
+  /* Slide container: semi-transparent panel to improve contrast */
+  #slide {
+    max-width: 95%;
+    font-size: 2.4em;
+    font-weight: bold;         /* make slide text extra bold */
+    line-height: 1.8em;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7); /* darker background for better contrast */
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* add text shadow for better readability */
+    white-space: pre-line;
+    overflow: hidden;
+    height: 80vh;
+    position: relative;
+  }  #script-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    animation: scroll-up 60s linear infinite;
+    animation-play-state: running;
+  }
+
+  #script-content.paused {
+    animation-play-state: paused;
+  }
+  @keyframes scroll-up {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+  #controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-family: 'Raleway', sans-serif;
+    display: none; /* Hide the controls */
+  }
+</style>
+</head>
+<body>
+
+<div id="slide">
+  <div id="script-content"></div>
+</div>
+
+<div id="controls">Press SPACE to Play/Pause</div>
+
+<script>
+// Complete script content as one continuous piece
+const scriptText = `Muhammad / Muhammad / peace be upon him! / peace be upon him!
+
+Born in Makkah / desert land /
+Light of truth / across the sand /
+
+Family strong / tribe Quraysh /
+Known for truth / in every place /
+
+People called him / Al-Amin /
+Trustworthy one / pure and clean /
+
+
+
+
+Muhammad / Muhammad / peace be upon him! / peace be upon him!
+
+Angel came / inside the cave /
+Told him "Read!" / be strong and brave /
+
+Words of Allah / shining bright /
+Qur'an came / with truth and light /
+
+Told the people / worship One /
+Allah's truth / like shining sun /
+
+
+
+
+Muhammad / Muhammad / peace be upon him! / peace be upon him!
+
+Faced hard times / but stayed strong /
+Patience helped / him move along /
+
+Left his home / for Allah's way /
+Hijrah time / a brand new day /
+
+Madinah smiled / to see his face /
+City of peace / love and grace /
+
+
+
+
+Muhammad / Muhammad / peace be upon him! / peace be upon him!
+
+Taught good deeds / helped the poor /
+Knocked upon / each kindness door /
+
+Loved the kids / cared for old /
+Heart so pure / and made of gold /
+
+Kind to animals / plants and trees /
+Spread respect / and words of peace /
+
+
+
+
+He's our Prophet / guide and friend /
+Follow his way / until the end!
+Muhammad / Muhammad / peace be upon him! / peace be upon him!`;
+
+const scriptContentEl = document.getElementById('script-content');
+
+// Initialize the script content
+scriptContentEl.textContent = scriptText;
+</script>
+
+</body>
+</html>
