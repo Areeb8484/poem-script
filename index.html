@@ -51,35 +51,25 @@
     left: 0;
     right: 0;
     padding: 40px;             /* increased from 30px to match slide container */
-    animation: scroll-up 30s linear infinite; /* doubled duration for smooth loop */
-    animation-play-state: running;
     word-wrap: break-word;     /* ensure content text wraps properly */
     overflow-wrap: break-word; /* additional wrapping support */
+  }
+
+  #script-content.scrolling {
+    animation: scroll-up 30s linear forwards; /* use forwards to stop at end */
   }
 
   #script-content.paused {
     animation-play-state: paused;
   }
+
   @keyframes scroll-up {
     0% {
       transform: translateY(0%);
     }
     100% {
-      transform: translateY(-50%); /* scroll to halfway point for smooth loop */
+      transform: translateY(-100%); /* scroll to end */
     }
-  }
-  #controls {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 0.8em;
-    font-family: 'Raleway', sans-serif;
-    display: block; /* Show the controls */
-    z-index: 10;    /* Ensure controls appear above other content */
   }
 </style>
 </head>
@@ -88,8 +78,6 @@
 <div id="slide">
   <div id="script-content"></div>
 </div>
-
-<div id="controls">Press SPACE to Play/Pause</div>
 
 <script>
 // Complete script content as one continuous piece
@@ -105,7 +93,6 @@ People called him / Al-Amin /
 Trustworthy one / pure and clean /
 
 
-
 Muhammad / Muhammad / peace be upon him! / peace be upon him!
 
 Angel came / inside the cave /
@@ -116,7 +103,6 @@ Qur'an came / with truth and light /
 
 Told the people / worship One /
 Allah's truth / like shining sun /
-
 
 
 Muhammad / Muhammad / peace be upon him! / peace be upon him!
@@ -131,7 +117,6 @@ Madinah smiled / to see his face /
 City of peace / love and grace /
 
 
-
 Muhammad / Muhammad / peace be upon him! / peace be upon him!
 
 Taught good deeds / helped the poor /
@@ -144,31 +129,47 @@ Kind to animals / plants and trees /
 Spread respect / and words of peace /
 
 
-
 He's our Prophet / guide and friend /
 Follow his way / until the end!`;
 
 const scriptContentEl = document.getElementById('script-content');
+let isScrolling = false;
 
-// Duplicate the text to create smooth looping effect
-const duplicatedText = scriptText + '\n\n\n' + scriptText;
+// Initialize the script content
+scriptContentEl.textContent = scriptText;
 
-// Initialize the script content with duplicated text
-scriptContentEl.textContent = duplicatedText;
-
-// Add keyboard event listener for spacebar to toggle play/pause
+// Add keyboard event listener for spacebar to toggle play/pause/restart
 document.addEventListener('keydown', function(event) {
   // Check if spacebar (keyCode 32) is pressed
   if (event.code === 'Space' || event.keyCode === 32) {
     event.preventDefault(); // Prevent default scrolling behavior of spacebar
     
-    // Toggle the paused class on script-content
-    if (scriptContentEl.classList.contains('paused')) {
-      scriptContentEl.classList.remove('paused');
+    if (!isScrolling) {
+      // Start scrolling
+      scriptContentEl.classList.add('scrolling');
+      isScrolling = true;
+      
+      // Listen for animation end to stop scrolling
+      scriptContentEl.addEventListener('animationend', function() {
+        isScrolling = false;
+        scriptContentEl.classList.remove('scrolling', 'paused');
+      }, { once: true });
+      
     } else {
-      scriptContentEl.classList.add('paused');
+      // Toggle pause/resume
+      if (scriptContentEl.classList.contains('paused')) {
+        scriptContentEl.classList.remove('paused');
+      } else {
+        scriptContentEl.classList.add('paused');
+      }
     }
   }
+});
+
+// Also handle animation end to reset state
+scriptContentEl.addEventListener('animationend', function() {
+  isScrolling = false;
+  scriptContentEl.classList.remove('scrolling', 'paused');
 });
 </script>
 
