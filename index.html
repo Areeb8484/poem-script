@@ -27,11 +27,13 @@
   }
   /* Slide container: semi-transparent panel to improve contrast */
   #slide {
-    max-width: 95%;
+    width: 75%;                /* increased from max-width: 95% to width: 75% for better screen utilization */
+    max-width: 1200px;         /* add max-width for very large screens */
+    min-width: 600px;          /* add min-width for smaller screens */
     font-size: 2.4em;
     font-weight: bold;         /* make slide text extra bold */
-    line-height: 1.8em;
-    padding: 30px;
+    line-height: 1.9em;        /* slightly increased from 1.8em for better readability */
+    padding: 40px;             /* increased from 30px for better spacing */
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.7); /* darker background for better contrast */
     box-shadow: 0 0 40px rgba(0,0,0,0.5);
@@ -45,7 +47,7 @@
     top: 0;
     left: 0;
     right: 0;
-    padding: 30px;
+    padding: 40px;             /* increased from 30px to match slide container */
     animation: scroll-up 60s linear infinite;
     animation-play-state: running;
   }
