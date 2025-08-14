@@ -1,140 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Seerah Poem Slideshow</title>
-<style>
-  /* Import elegant Arabic-style serif and sans-serif fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Raleway:wght@500&display=swap');
-
-  /* Base page styling: rich brown background with subtle texture and centered content */
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    color: #ffffff;            /* bright white text for maximum readability */
-    font-family: 'Amiri', serif;
-    font-weight: bold;         /* make text bolder */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #5b3a29;  /* fallback brown background */
-    /* use our decorative image as a backdrop */
-    background-image: url('background.png');
-    background-size: cover;
-    background-position: center;
-  }
-  /* Slide container: semi-transparent panel to improve contrast */
-  #slide {
-    width: 55%;                /* reduced from 75% to better fit content width */
-    max-width: 800px;          /* reduced from 1200px for narrower text box */
-    min-width: 450px;          /* reduced from 600px for smaller screens */
-    font-size: 2.4em;
-    font-weight: bold;         /* make slide text extra bold */
-    line-height: 1.9em;        /* slightly increased from 1.8em for better readability */
-    padding: 40px;             /* increased from 30px for better spacing */
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.7); /* darker background for better contrast */
-    box-shadow: 0 0 40px rgba(0,0,0,0.5);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* add text shadow for better readability */
-    white-space: pre-line;
-    word-wrap: break-word;     /* ensure long lines wrap properly */
-    overflow-wrap: break-word; /* additional wrapping support */
-    overflow: hidden;
-    height: 80vh;
-    position: relative;
-  }
-  #script-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 40px;             /* increased from 30px to match slide container */
-    animation: scroll-up 15s linear infinite; /* sped up from 25s to 15s */
-    animation-play-state: running;
-    word-wrap: break-word;     /* ensure content text wraps properly */
-    overflow-wrap: break-word; /* additional wrapping support */
-  }
-
-  @keyframes scroll-up {
-    0% {
-      top: 0;
-    }
-    100% {
-      top: -100%;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .scrolling-text {
+            position: relative;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+    <title>Smooth Scrolling Text</title>
 </head>
 <body>
-
-<div id="slide">
-  <div id="script-content"></div>
-</div>
-
-<script>
-// Complete script content as one continuous piece
-const scriptText = `Muhammad / Muhammad / peace be upon him! / peace be upon him!
-
-Born in Makkah / desert land /
-Light of truth / across the sand /
-
-Family strong / tribe Quraysh /
-Known for truth / in every place /
-
-People called him / Al-Amin /
-Trustworthy one / pure and clean /
-
-
-
-Muhammad / Muhammad / peace be upon him! / peace be upon him!
-
-Angel came / inside the cave /
-Told him "Read!" / be strong and brave /
-
-Words of Allah / shining bright /
-Qur'an came / with truth and light /
-
-Told the people / worship One /
-Allah's truth / like shining sun /
-
-
-
-Muhammad / Muhammad / peace be upon him! / peace be upon him!
-
-Faced hard times / but stayed strong /
-Patience helped / him move along /
-
-Left his home / for Allah's way /
-Hijrah time / a brand new day /
-
-Madinah smiled / to see his face /
-City of peace / love and grace /
-
-
-
-Muhammad / Muhammad / peace be upon him! / peace be upon him!
-
-Taught good deeds / helped the poor /
-Knocked upon / each kindness door /
-
-Loved the kids / cared for old /
-Heart so pure / and made of gold /
-
-Kind to animals / plants and trees /
-Spread respect / and words of peace /
-
-
-
-He's our Prophet / guide and friend /
-Follow his way / until the end!`;
-
-const scriptContentEl = document.getElementById('script-content');
-
-// Initialize the script content
-scriptContentEl.textContent = scriptText;
-</script>
-
+    <div class="scrolling-text">
+        <!-- Duplicate the text content here -->
+        Your scrolling text goes here. Your scrolling text goes here. Your scrolling text goes here.
+    </div>
 </body>
 </html>
